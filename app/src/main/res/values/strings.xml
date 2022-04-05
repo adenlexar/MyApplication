@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <!--Page d'accueil-->
+    <string name="home_page_title">NutriWatcher</string>
+    <string name="home_page_info_button">Mes Infos</string>
+    <string name="home_page_nutri_button">Ma Nutrition</string>
+    <string name="home_page_comp_button">Les Compléments</string>
+
+    <!--Paramétrage des infos-->
+    <string name="info_name_input">Nom</string>
+    <string name="info_sexe_male">Homme</string>
+    <string name="info_sexe_female">Femme</string>
+
+
+    <string name="info_age_input">Âge : </string>
+
+    <string name="info_height_input">Taille (cm) : </string>
+    <string name="info_weight_input">Poids (kg) : </string>
+
+    <string-array name="info_activ_input">
+        <item>Activité : Sédentaire</item>
+        <item>Activité : Légèrement actif</item>
+        <item>Activité : Actif</item>
+        <item>Activité : Très actif</item>
+        <item>Activité : Extrêmement actif</item>
+    </string-array>
+
+    <string-array name="info_goal_input">
+        <item>Objectif : Maintient</item>
+        <item>Objectif : Prise de masse musculaire</item>
+        <item>Objectif : Perte de masse grasse</item>
+    </string-array>
+    
+    <string name="info_save_button">Enregistrer les infos</string>
+
+    <string name="info_imc_output">Votre IMC : </string>
+    <string name="info_mb_output">Votre métabolisme basal : </string>
+    <string name="info_mo_output">Les calories que vous devez ingérer : </string>
+
+
+    <!--Calculateur Nutritionnel-->
+    <string name="nutri_add_button">Ajouter</string>
+    <string name="nutri_kcal">kcal</string>
+
+    <!--Les Macros-->
+    <string name="nutri_macro_kcal">kcal</string>
+    <string name="nutri_macro_g">glucides</string>
+    <string name="nutri_macro_p">protéines</string>
+    <string name="nutri_macro_l">lipides</string>
+
+    <!--Les Compléments-->
+
+    <!--Pop-up Compléments-->
+</resources>
