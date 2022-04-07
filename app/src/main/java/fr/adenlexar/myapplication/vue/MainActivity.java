@@ -3,6 +3,7 @@ package fr.adenlexar.myapplication.vue;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //construction des éléments graphiques en appelant le fichier xml associé
-        init();
+        Log.wtf("msg", "************************************init !");
         this.controle = Controle.getInstance();
+        init();
     }
 
     //controleur
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     //propriétés graphiques output
     private TextView txtImc;
     private TextView txtMeta;
+    private TextView txtMetaMai;
     private TextView txtMetaObj;
-
 
     /**
      * Init des liens avec les objets graphiques
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.txtImc = (TextView) findViewById(R.id.idImcOutput);
         this.txtMeta = (TextView) findViewById(R.id.idMetaOutput);
+        this.txtMetaMai = (TextView) findViewById(R.id.idMetaMaiOutput);
         this.txtMetaObj = (TextView) findViewById(R.id.idMetaObjOutput);
 
         ecouteCalcul();
@@ -59,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
     private void ecouteCalcul(){
         ((Button) findViewById(R.id.idCalcButton)).setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
+
+                Log.d("msg", "************************************bouton !");
                 //@TODO compléter la méthode avec activité et objectif
+                //@TODO mieux gerer les données
                 String nom = "";
                 boolean sexe = true;
                 int age = 0;
@@ -67,17 +73,18 @@ public class MainActivity extends AppCompatActivity {
                 int poids = 0;
 
                 //récup données saisies
-                nom = txtNom.toString();
+                nom = txtNom.getText().toString();
                 sexe = rdHomme.isChecked();
                 try{
-                    age = Integer.parseInt(txtAge.toString());
-                    taille = Integer.parseInt(txtTaille.toString());
-                    poids = Integer.parseInt(txtPoids.toString());
+                    age = Integer.parseInt(txtAge.getText().toString());
+                    taille = Integer.parseInt(txtTaille.getText().toString());
+                    poids = Integer.parseInt(txtPoids.getText().toString());
                 }catch(Exception e){};
 
                 //controle des données saisies
                 if(age == 0 || taille == 0 || poids == 0){
                     Toast.makeText(MainActivity.this,"saisie incorrecte",Toast.LENGTH_SHORT);
+                    resetInfos();
                 }
                 else{
                     afficheInfos(nom, sexe, age, taille, poids, 0,1);
@@ -101,12 +108,24 @@ public class MainActivity extends AppCompatActivity {
         this.controle.creerProfil(nom,sexe,age,taille,poids,activite,objectif);
         double imc = this.controle.getImc();
         int metabolisme_basal = this.controle.getMetabolisme_basal();
+        int metabolisme_maintient =  this.controle.getMetabolisme_maintient();
         int metabolisme_objectif = this.controle.getMetabolisme_objectif();
 
         //affichage
-        this.txtImc.setText(String.format("%.0.1f",imc));
-        this.txtMeta.setText(metabolisme_basal);
-        this.txtMetaObj.setText(metabolisme_objectif);
+        this.txtImc.setText(String.valueOf(imc)); //@TODO faire afficher 1 chiffre apres la virgule
+        this.txtMeta.setText(String.valueOf(metabolisme_basal) + " kcal");
+        this.txtMetaMai.setText(String.valueOf(metabolisme_maintient) + " kcal");
+        this.txtMetaObj.setText(String.valueOf(metabolisme_objectif) + " kcal");
     }
 
+    /**
+     * remet à 0 l'affichage
+     */
+    private void resetInfos(){
+        //affichage
+        this.txtImc.setText("");
+        this.txtMeta.setText("");
+        this.txtMetaMai.setText("");
+        this.txtMetaObj.setText("");
+    }
 }

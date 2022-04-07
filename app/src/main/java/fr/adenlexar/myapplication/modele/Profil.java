@@ -64,10 +64,11 @@ public class Profil {
     }
 
     private void calculMetaO(){
-        if(this.objectif < 0){
+        this.metabolisme_objectif = this.metabolisme_maintient;
+        if(this.objectif > 0){
             this.metabolisme_objectif *= 1.1;
         }
-        else if(this.objectif > 0){
+        else if(this.objectif < 0){
             this.metabolisme_objectif *= 0.9;
         }
     }

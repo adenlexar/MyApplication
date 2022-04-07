@@ -36,7 +36,8 @@
 
     <string name="info_imc_output">Votre IMC : </string>
     <string name="info_mb_output">Votre métabolisme basal : </string>
-    <string name="info_mo_output">Les calories que vous devez ingérer : </string>
+    <string name="info_mm_output">Votre métabolisme de maintient : </string>
+    <string name="info_mo_output">Objectif : </string>
 
 
     <!--Calculateur Nutritionnel-->
